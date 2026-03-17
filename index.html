@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEM Portal Mock</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="top-header">
+      <div class="top-inner">
+        <div class="brand">
+          <span class="gem-mark"></span>
+          <span class="gem-text"><strong>GEM</strong>Portal</span>
+        </div>
+        <nav class="utility-nav">
+          <a href="#">マイレポート</a>
+          <a href="#">オプション</a>
+          <a href="#">投稿</a>
+          <a href="#">検索</a>
+          <a href="#">設定</a>
+        </nav>
+      </div>
+      <div class="top-progress">
+        <span>2023年10月 / 週次</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="main-column">
+        <div class="main-panel">
+
+          <div class="scope-header">
+            <div class="scope-header-left">
+              <div class="scope-kicker">推しエンタメブランドスコープ <span class="badge">(デモ)</span></div>
+              <button class="btn btn-primary report-btn">レポート版を見る</button>
+            </div>
+            <div class="scope-header-right">
+              <div class="scope-right-actions">
+                <button class="btn btn-secondary">マニュアル</button>
+                <button class="btn btn-secondary">よくある質問</button>
+                <button class="btn btn-secondary">商品情報</button>
+                <button class="btn btn-tertiary">CSVをDL</button>
+                <button class="btn btn-tertiary" data-pdf-trigger="main">PDFを作成</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="base-top-tabs">
+            <button data-tab-target="tabBodyTrendRanking" data-tab-key="trendRanking">トレンド：ランキング</button>
+            <button data-tab-target="tabBodyOshiHitAnalysis" data-tab-key="trendHit">トレンド：推しヒット分析</button>
+            <button data-tab-target="tabBodyMarketChange" data-tab-key="marketChange">トレンド：市場変化</button>
+            <button class="is-active" data-tab-target="tabBodyFukabori" data-tab-key="deepDiveIndividual">深堀りする：個別分析</button>
+            <button data-tab-target="tabBodyFukabori" data-tab-key="deepDiveComparison">深堀りする：比較分析</button>
+            <button data-tab-target="tabBodyHakken" data-tab-key="discover">発見する</button>
+            <button data-tab-target="tabBodySagasu" data-tab-key="search">探す</button>
+          </div>
+
+          <div id="tabBodyFukabori" class="tab-body">
+            <div id="baseDashboardView" class="base-dashboard-view">
+            <div class="base-workspace">
+              <section class="base-table-area">
+                <div class="base-filter-row">
+                  <button class="base-level-btn" type="button">エンタメブランド ▼</button>
+                  <input class="base-keyword-input" type="text" placeholder="キーワード" />
+                </div>
+              <p class="base-period">調査期間: 2022/10/29〜2026/02/14(50か月間)</p>
+              <div class="base-meta-row">
+                <p>件数(全13082件中1件〜20件)</p>
+                <div class="base-pager">
+                  <button class="is-active" type="button">1</button>
+                  <button type="button">2</button>
+                  <button type="button">3</button>
+                  <button type="button">4</button>
+                  <button type="button">5</button>
+                  <button type="button">6</button>
+                  <button type="button">»</button>
+                </div>
+              </div>
+              <p class="base-sort-note">※表頭ラベルをクリックすることで、並び替えできます。</p>
+
+              <div class="base-table-wrap">
+                <table class="base-brand-table">
+                  <thead>
+                    <tr>
+                      <th>エンタメブランド</th>
+                      <th>月当たりGEM指数（全期間）</th>
+                      <th>月当たり推しファン人数（全期間 万人/月）</th>
+                      <th>月当たり推しファン人数（直近1年間 万人/月）</th>
+                      <th>月当たり支出金額計（全期間 億円/月）</th>
+                      <th>月当たり接触日数計（全期間 万日/月）</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Snow Man</td><td>6,203.8 GEM</td><td>153.5万人</td><td>124.8万人</td><td>8.6億円</td><td>2,674.0万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ONE PIECE</td><td>6,174.7 GEM</td><td>79.3万人</td><td>99.7万人</td><td>36.1億円</td><td>1,281.1万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>お笑い向上委員会</td><td>5,595.3 GEM</td><td>26.0万人</td><td>27.1万人</td><td>49.3億円</td><td>333.5万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ポケットモンスター</td><td>5,432.4 GEM</td><td>78.2万人</td><td>89.4万人</td><td>30.8億円</td><td>1,178.6万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>名探偵コナン</td><td>5,085.7 GEM</td><td>132.2万人</td><td>120.4万人</td><td>28.8億円</td><td>1,102.2万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>SPY×FAMILY</td><td>4,888.5 GEM</td><td>150.0万人</td><td>149.7万人</td><td>29.9億円</td><td>948.3万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>すみっコぐらし</td><td>3,885.2 GEM</td><td>65.2万人</td><td>96.2万人</td><td>21.3億円</td><td>877.9万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ガンダム</td><td>3,547.0 GEM</td><td>48.7万人</td><td>47.3万人</td><td>20.5億円</td><td>748.9万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>スラムダンク</td><td>3,478.9 GEM</td><td>13.7万人</td><td>14.6万人</td><td>31.9億円</td><td>145.4万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ドラえもん</td><td>3,321.2 GEM</td><td>32.8万人</td><td>34.1万人</td><td>24.5億円</td><td>530.6万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>プリキュア</td><td>3,240.1 GEM</td><td>39.8万人</td><td>38.4万人</td><td>22.4億円</td><td>512.8万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ワンパンマン</td><td>3,077.5 GEM</td><td>35.2万人</td><td>33.9万人</td><td>19.8億円</td><td>470.1万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>進撃の巨人</td><td>2,954.6 GEM</td><td>31.4万人</td><td>30.2万人</td><td>18.5億円</td><td>438.9万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>呪術廻戦</td><td>2,899.3 GEM</td><td>29.1万人</td><td>31.7万人</td><td>17.2億円</td><td>421.5万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>機動戦士Zガンダム</td><td>2,758.2 GEM</td><td>24.8万人</td><td>22.9万人</td><td>15.4億円</td><td>390.2万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>鬼滅の刃</td><td>2,680.0 GEM</td><td>21.3万人</td><td>23.1万人</td><td>14.6億円</td><td>356.7万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>チェンソーマン</td><td>2,609.8 GEM</td><td>20.7万人</td><td>24.4万人</td><td>13.9億円</td><td>341.9万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>葬送のフリーレン</td><td>2,498.6 GEM</td><td>18.2万人</td><td>17.5万人</td><td>12.8億円</td><td>318.4万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>キングダム</td><td>2,411.7 GEM</td><td>16.9万人</td><td>19.2万人</td><td>12.1億円</td><td>301.2万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                    <tr><td>ミニオンズ</td><td>2,330.9 GEM</td><td>15.8万人</td><td>18.7万人</td><td>11.5億円</td><td>287.6万日</td><td><span class="base-select-pill">選択</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <aside class="base-save-area">
+              <section class="base-selected-box">
+                <h2>選択中のエンタメブランド</h2>
+                <p class="base-selected-label">エンタメブランドレベル / 保持数</p>
+                <div id="selectedBrandValue" class="base-selected-input">作品を選択してください。</div>
+              </section>
+              <button id="reportExportBtn" class="base-add-report" type="button">レポート出力</button>
+
+              <section class="base-savelist-box">
+                <h2>保存リスト</h2>
+                <div class="base-save-entry"><span>snowman</span><span class="save-icons">⬆ ✕</span></div>
+                <div class="base-save-entry"><span>速度検証</span><span class="save-icons">⬆ ✕</span></div>
+                <div class="base-save-entry"><span>速度検証</span><span class="save-icons">⬆ ✕</span></div>
+                <div class="base-save-entry"><span>速度検証</span><span class="save-icons">⬆ ✕</span></div>
+                <div class="base-save-entry"><span>鬼滅の刃</span><span class="save-icons">⬆ ✕</span></div>
+              </section>
+            </aside>
+          </div>
+            <div id="baseLoadingOverlay" class="base-loading-overlay is-hidden">
+              <span class="base-spinner" aria-hidden="true"></span>
+              <p>読み込み中...</p>
+            </div>
+          </div>
+          </div>
+          <div id="tabBodyTrendRanking" class="tab-body is-hidden">
+            <div class="base-panel">
+              <div class="rank-head">
+                <h2 style="margin:0 0 10px; font-size:24px;">トレンド：ランキング</h2>
+                <p style="margin:0; color:#666; font-size:12px;">当月値でランキング。各指標の上位ブランドを比較する画面です。</p>
+              </div>
+              <div class="rank-tabs" style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px; margin-bottom:12px;">
+                <button style="background:#f6a523; color:#fff; border:1px solid #e59d16;">当月値でランキング</button>
+                <button style="background:#ccc; border:1px solid #bbb;">急上昇ランキング（差分ベース）</button>
+                <button style="background:#ccc; border:1px solid #bbb;">急上昇ランキング（比率ベース）</button>
+                <button style="background:#ccc; border:1px solid #bbb;">期間を選んでランキング</button>
+              </div>
+              <div style="border:1px solid #ddd; background:#fafafa; padding:10px; margin-bottom:10px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">①</span> 調査回を選択してください
+                  <select style="margin-left:8px;"><option>20250712</option><option>20250705</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">②</span> 回答者属性を選択してください
+                  <select><option>性別(すべて)</option></select>
+                  <select><option>年代(すべて)</option></select>
+                  <select><option>ファンスケール(すべて)</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">③</span> 並び替え指標を選択ください
+                  <input type="radio">推しエンタメブランド価値
+                  <input type="radio">月当たり推しファン人数
+                </div>
+              </div>
+              <div style="border:1px solid #ddd; padding:10px; background:#fff;">
+                <h3 style="margin:0 0 8px; font-size:14px;">20250712の月当たり推しファン人数（万人/月）順</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+                  <div style="border:1px solid #eee; padding:6px;"><strong>推しエンタメブランド価値</strong><br><div style="height:12px;background:#82b8ec;margin-top:6px;width:75%;"></div></div>
+                  <div style="border:1px solid #eee; padding:6px;"><strong>推しファン人数</strong><br><div style="height:12px;background:#f2a841;margin-top:6px;width:60%;"></div></div>
+                  <div style="border:1px solid #eee; padding:6px;"><strong>支出金額</strong><br><div style="height:12px;background:#6bbf78;margin-top:6px;width:55%;"></div></div>
+                  <div style="border:1px solid #eee; padding:6px;"><strong>接触日数</strong><br><div style="height:12px;background:#e46767;margin-top:6px;width:40%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tabBodyOshiHitAnalysis" class="tab-body is-hidden">
+            <div class="base-panel">
+              <div class="rank-head">
+                <h2 style="margin:0 0 10px; font-size:24px;">トレンド：推しヒット分析</h2>
+                <p style="margin:0; color:#666; font-size:12px;">急上昇トレンドと注目ブランドの分析画面です。</p>
+              </div>
+              <div style="border:1px solid #ddd; background:#f9f9f9; padding:10px; margin-bottom:10px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">①</span> 今期の範囲を選択してください
+                  <select style="margin-left:8px;"><option>20250712</option><option>20250705</option></select>
+                  <select><option>対象期間含む1年間</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">②</span> 回答者属性を選択してください
+                  <select><option>性別(すべて)</option></select>
+                  <select><option>年代(すべて)</option></select>
+                  <select><option>ファンスケール(すべて)</option></select>
+                  <select><option>好きなエンタメ</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">③</span> 詳細設定
+                  <button style="font-size:12px; padding:4px 8px;">表示</button>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
+                <div style="border:1px solid #ddd; padding:10px; background:#fff;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:8px;"><strong>今期推しヒット分析</strong><span>起点月: 20250712</span></div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                    <div style="border:1px solid #eee; padding:6px;"><strong>バブルサイズ</strong><br><select><option>支出金額</option></select></div>
+                    <div style="border:1px solid #eee; padding:6px;"><strong>色</strong><br><select><option>1万人以上</option></select></div>
+                  </div>
+                </div>
+                <div style="border:1px solid #ddd; padding:10px; background:#fff; display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                  <div style="border:1px solid #eee; padding:8px; min-height:120px;"><h4 style="margin:0 0 6px;">推しファン人数推移</h4><div style="height:70px; background:linear-gradient(90deg,#f6a928 30%,#fff 30%);"></div></div>
+                  <div style="border:1px solid #eee; padding:8px; min-height:120px;"><h4 style="margin:0 0 6px;">ブランドバブル</h4><div style="height:70px; background:linear-gradient(90deg,#5f97d3 30%,#fff 30%);"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tabBodyMarketChange" class="tab-body is-hidden">
+            <div class="base-panel">
+              <div class="rank-head">
+                <h2 style="margin:0 0 10px; font-size:24px;">トレンド：市場変化</h2>
+                <p style="margin:0; color:#666; font-size:12px;">市場全体の変化トレンドを確認するための分析画面です。</p>
+              </div>
+              <div style="border:1px solid #ddd; background:#f9f9f9; padding:10px; margin-bottom:10px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">①</span> 調査回を選択してください
+                  <select style="margin-left:8px;"><option>すべて</option></select>
+                  <select><option>直近1年間</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">②</span> 回答者属性を選択してください
+                  <select><option>性別(すべて)</option></select>
+                  <select><option>年代(すべて)</option></select>
+                  <select><option>ファンスケール(すべて)</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">③</span> 分析指標・粒度を選択
+                  <div style="display:flex; gap:6px;"><label><input type="radio" checked> 推しエンタメブランド価値 </label><label><input type="radio"> 月当たり推しファン人数</label></div>
+                </div>
+              </div>
+              <div style="border:1px solid #ddd; padding:10px; background:#fff;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;"><strong>エンタメブランドファンの「デモグラ」性別 内訳</strong><span>延べ月当たり推しファン人数</span></div>
+                <div style="height:28px; background:linear-gradient(90deg, #2b9cf0 45%, #f6a7ca 45% 100%); position:relative; border-radius:4px; margin-bottom:8px;"></div>
+                <div style="display:flex; justify-content:space-between; font-size:12px;"><span>男性 3,502万人/月 (45%)</span><span>女性 4,229万人/月 (55%)</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="tabBodyHakken" class="tab-body is-hidden">
+            <div class="base-panel">
+              <div class="rank-head">
+                <h2 style="margin:0 0 10px; font-size:24px;">発見する</h2>
+                <p style="margin:0; color:#666; font-size:12px;">カットオフや属性を絞り込み、エンタメブランドを発見します。</p>
+              </div>
+              <div style="border:1px solid #ddd; background:#f9f9f9; padding:10px; margin-bottom:10px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">①</span> 調査回を選択してください
+                  <select style="margin-left:8px;"><option>すべて</option></select>
+                  <select><option>直近1年間</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">②</span> カットオフを見直してください
+                  <label style="margin-left:8px;">月当たり人数 <input type="range" min="0" max="1000" style="width:180px;"></label>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">③</span> 回答者属性を選択してください
+                  <select><option>性別(すべて)</option></select>
+                  <select><option>年代(すべて)</option></select>
+                  <select><option>ファンスケール(すべて)</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">④</span> バブル指標・色分けを選択
+                  <div style="display:flex; gap:6px;"><label><input type="radio" checked> 推しエンタメブランド価値 </label><label><input type="radio"> 支出金額</label></div>
+                </div>
+              </div>
+              <div style="border:1px solid #ddd; padding:10px; background:#fff;">
+                <div style="margin-bottom:8px; font-size:13px;font-weight:700;">エンタメブランドファンの「デモグラ」性別内訳</div>
+                <div style="height:25px; background:linear-gradient(90deg,#2b9cf0 45%,#f6a7ca 45% 100%); border-radius:4px; margin-bottom:8px;"></div>
+                <div style="display:flex; justify-content:space-between; font-size:12px;"><span>男性 3,502万人/月 (45%)</span><span>女性 4,229万人/月 (55%)</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="tabBodySagasu" class="tab-body is-hidden">
+            <div class="base-panel">
+              <div class="rank-head">
+                <h2 style="margin:0 0 10px; font-size:24px;">探す</h2>
+                <p style="margin:0; color:#666; font-size:12px;">属性別のファン分布と注目ブランドを見つけるワークスペースです。</p>
+              </div>
+              <div style="border:1px solid #ddd; background:#f9f9f9; padding:10px; margin-bottom:10px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">①</span> 調査回を選択してください
+                  <select style="margin-left:8px;"><option>20250712</option><option>20250705</option></select>
+                  <select><option>直近1年間</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">②</span> 分析軸を選択
+                  <select><option>性別</option></select>
+                  <select><option>年代</option></select>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;"><span style="font-weight:700;">③</span> 注目セグメントを設定
+                  <select><option>女性</option></select>
+                  <button style="font-size:12px; padding:4px 8px;">絞り込む</button>
+                </div>
+              </div>
+              <div style="border:1px solid #ddd; padding:10px; background:#fff;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;"><strong>注目ブランド候補 (上位5)</strong><span style="font-size:12px; color:#666;">GEMスコア順</span></div>
+                <div style="display:grid; grid-template-columns:1fr; gap:6px;">
+                  <div style="border:1px solid #eee; padding:8px; display:flex; justify-content:space-between;"><span>ONE PIECE</span><span>6,174 GEM</span></div>
+                  <div style="border:1px solid #eee; padding:8px; display:flex; justify-content:space-between;"><span>鬼滅の刃</span><span>2,680 GEM</span></div>
+                  <div style="border:1px solid #eee; padding:8px; display:flex; justify-content:space-between;"><span>SPY×FAMILY</span><span>4,888 GEM</span></div>
+                  <div style="border:1px solid #eee; padding:8px; display:flex; justify-content:space-between;"><span>進撃の巨人</span><span>2,954 GEM</span></div>
+                  <div style="border:1px solid #eee; padding:8px; display:flex; justify-content:space-between;"><span>プリキュア</span><span>3,240 GEM</span></div>
+                </div>
+                <div style="height:120px; margin-top:10px; background:linear-gradient(90deg,#89c4f5 30%,#f4b16a 30% 60%,#d4d4d4 60%); border-radius:4px;"></div>
+                <div style="margin-top:8px; font-size:12px; color:#555;">※上記はフィルタ適用後の推しファン分布イメージです。</div>
+              </div>
+            </div>
+          </div>
+          <div id="baseDetailView" class="base-detail-view is-hidden">
+            <div class="detail-tabs">
+              <button class="is-active" type="button">詳細分析</button>
+              <button type="button">トレンド俯瞰（月別推移）</button>
+              <button type="button">指標別のトレンド</button>
+            </div>
+
+            <div class="detail-meta-panel">
+              <div class="detail-meta-left">
+                <label>
+                  調査回
+                  <select>
+                    <option>直近1年間</option>
+                    <option>直近2年間</option>
+                  </select>
+                </label>
+                <label>
+                  エンタメブランド
+                  <select>
+                    <option>Snow Man</option>
+                    <option>ONE PIECE</option>
+                    <option>呪術廻戦</option>
+                  </select>
+                </label>
+                <label>
+                  表示期間
+                  <select>
+                    <option>直近12か月</option>
+                    <option>全期間</option>
+                  </select>
+                </label>
+              </div>
+              <div class="detail-meta-right">
+                <div>
+                  <p class="detail-meta-label">Data Last Update</p>
+                  <p class="detail-meta-value">2025/07/28</p>
+                </div>
+                <button type="button" class="btn btn-secondary">詳細検索（クリック）</button>
+              </div>
+            </div>
+
+            <ol class="detail-step-list">
+              <li>
+                <div class="step-head">調査回の範囲を設定してください</div>
+                <div class="step-body">
+                  <select>
+                    <option>すべて</option>
+                  </select>
+                </div>
+              </li>
+              <li>
+                <div class="step-head">分析指標・メディア・回答者属性を選択してください</div>
+                <div class="step-body step-grid">
+                  <label>分析指標選択
+                    <select><option>推しエンタメブランド価値</option></select>
+                  </label>
+                  <label>好きなメディア
+                    <select><option>全メディア傾向</option></select>
+                  </label>
+                  <label>性別
+                    <select><option>すべて</option></select>
+                  </label>
+                  <label>年齢
+                    <select><option>すべて</option></select>
+                  </label>
+                  <label>ファンスケール
+                    <select><option>すべて</option></select>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="step-head">除外したいエンタメブランド要素があれば選択してください</div>
+                <div class="step-body">
+                  <select>
+                    <option>（すべて）</option>
+                  </select>
+                </div>
+              </li>
+            </ol>
+
+            <section class="detail-brand-summary">
+              <header class="detail-brand-header">
+                <div>
+                  <p class="detail-brand-label">集計月数: 12か月</p>
+                  <h3 class="detail-brand-name">Snow Man</h3>
+                </div>
+                <div class="detail-brand-tag">チェック中のブランド</div>
+              </header>
+              <div class="detail-metric-grid">
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">推しエンタメブランド価値（期間平均）</p>
+                  <p class="detail-metric-value">7,211 <span>GEM/月</span></p>
+                  <p class="detail-metric-sub">平均年齢 39.3歳</p>
+                </div>
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">月当たり推しファン人数（期間平均）</p>
+                  <p class="detail-metric-value">91.5 <span>万人/月</span></p>
+                  <p class="detail-metric-sub">期間中最大 104.6万人（2025/03/15調査）</p>
+                </div>
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">支出金額計（期間平均）</p>
+                  <p class="detail-metric-value">44 <span>億円/月</span></p>
+                  <p class="detail-metric-sub">平均月当り支出金額 4,810円</p>
+                </div>
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">接触日数計（期間平均）</p>
+                  <p class="detail-metric-value">1,405 <span>万日/月</span></p>
+                  <p class="detail-metric-sub">平均月当り接触日数 15.4日</p>
+                </div>
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">平均ファン歴</p>
+                  <p class="detail-metric-value">3.1 <span>年</span></p>
+                  <p class="detail-metric-sub">平均月当り最大許容支出 7,295円</p>
+                </div>
+                <div class="detail-metric-card">
+                  <p class="detail-metric-label">平均月当り希望接触日数（一人当り）</p>
+                  <p class="detail-metric-value">17.1 <span>日</span></p>
+                  <p class="detail-metric-sub">希望と実績の差 +1.7日</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="detail-chart-panel">
+              <header class="detail-chart-head">
+                <div>
+                  <p class="detail-chart-label">分析指標</p>
+                  <h4>月当り推しファン人数（月人/月） 月別推移［全期間］</h4>
+                </div>
+                <div class="detail-chart-legend">
+                  <span class="legend-dot is-primary"></span> Snow Man
+                  <span class="legend-dot is-secondary"></span> 全ブランド平均
+                </div>
+              </header>
+              <div class="detail-chart-body">
+                <div class="detail-chart-line">
+                  <span style="--point:88;">88.0</span>
+                  <span style="--point:94;">94.0</span>
+                  <span style="--point:100;">100.6</span>
+                  <span style="--point:92;">92.6</span>
+                  <span style="--point:87;">87.3</span>
+                  <span style="--point:91;">91.3</span>
+                </div>
+                <div class="detail-chart-caption">※サンプル表示（単位：万人/月）</div>
+              </div>
+            </section>
+
+            <section class="detail-note">
+              <p>※値が表示されない場合、当該期間には母集団がありません。「調査範囲の設定」で「表示期間」または「調査回」を変更してください。</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-column">
+        <div class="side-box">
+          <h3>関連資料</h3>
+          <p class="byline">From GEM Standard</p>
+        </div>
+        <div class="report-list">
+          <article class="report-item">
+            <div class="thumb t1"></div>
+            <div class="r-body">
+              <p class="r-title">視聴率分析レポート Vol.17</p>
+              <p class="r-meta">2026.03.08</p>
+            </div>
+          </article>
+          <article class="report-item">
+            <div class="thumb t2"></div>
+            <div class="r-body">
+              <p class="r-title">映画興収の推移（四半期）</p>
+              <p class="r-meta">2026.03.07</p>
+            </div>
+          </article>
+          <article class="report-item">
+            <div class="thumb t3"></div>
+            <div class="r-body">
+              <p class="r-title">国内配信ランキングの変化</p>
+              <p class="r-meta">2026.03.06</p>
+            </div>
+          </article>
+          <article class="report-item">
+            <div class="thumb t4"></div>
+            <div class="r-body">
+              <p class="r-title">ドラマシリーズ視聴意向調査</p>
+              <p class="r-meta">2026.03.05</p>
+            </div>
+          </article>
+          <article class="report-item">
+            <div class="thumb t5"></div>
+            <div class="r-body">
+              <p class="r-title">ニュースIP分析ダッシュボード</p>
+              <p class="r-meta">2026.03.04</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      GEM Standard 利用規約 | PRIVACY POLICY | お問い合わせ
+    </footer>
+  </div>
+
+  <button
+    id="aiFab"
+    class="ai-fab"
+    type="button"
+    aria-controls="aiLayer"
+    aria-expanded="false"
+  >
+    <span id="aiFabLabel">AI機能</span>
+    <span id="aiFabSpinner" class="ai-fab-spinner is-hidden" aria-hidden="true"></span>
+  </button>
+
+  <div id="aiLayer" class="ai-layer" aria-hidden="true">
+    <button id="aiBackdrop" class="ai-backdrop" type="button" aria-label="パネルを閉じる"></button>
+    <aside id="aiDrawer" class="ai-drawer" role="dialog" aria-labelledby="aiDrawerTitle">
+      <div class="ai-handle-stack">
+        <button id="aiDrawerCollapse" class="ai-handle-collapse" type="button" aria-label="ドロワーを閉じる">▶</button>
+        <button id="aiDrawerToggle" class="ai-handle-toggle" type="button" aria-label="ドロワー幅を切り替える" aria-pressed="false">◀</button>
+      </div>
+      <header class="ai-drawer-header">
+        <div>
+          <h2 id="aiDrawerTitle">分析AIエージェント</h2>
+        </div>
+        <div class="ai-header-right">
+          <button class="btn btn-tertiary" type="button" data-pdf-trigger="ai">PDFを作成</button>
+        </div>
+        <button id="aiDrawerClose" class="ai-close" type="button" aria-label="閉じる">×</button>
+      </header>
+      <div class="ai-drawer-body">
+        <section class="ai-card">
+          <h3 id="aiPanelTitle">AIサマリ</h3>
+          <div id="aiSelectedBrandRow" class="ai-selected-brand-row" style="display:none;">
+            <div class="ai-selected-brand-line">
+              <span class="ai-selected-brand-label">選択中のブランド:</span>
+              <span id="aiSelectedBrand" class="ai-selected-brand">未選択</span>
+            </div>
+          </div>
+          <div class="ai-summary-actions" id="aiSummaryActions">
+            <button class="is-active" type="button" data-summary="overview">概要サマリ</button>
+            <button type="button" data-summary="highlight">最新調査回のハイライト</button>
+          </div>
+          <div id="aiDataCoverageRow" class="ai-selected-brand-line" style="display:none;">
+            <span class="ai-data-coverage-period-label">データ対象期間:</span>
+            <span class="ai-data-coverage-period-value">直近1年間</span>
+          </div>
+          <div id="aiPanelLoading" class="ai-panel-loading is-hidden" aria-live="polite">
+            <span class="ai-panel-spinner" aria-hidden="true"></span>
+            <span>AIサマリ生成中…</span>
+          </div>
+          <p id="aiSummaryOutput" class="ai-summary-output">
+            エンタメブランドを選択し、レポート出力ボタンを押すとサマリが表示されます
+          </p>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <div id="pdfDemoOverlay" class="pdf-demo-overlay" aria-hidden="true">
+    <div class="pdf-demo-backdrop" id="pdfDemoBackdrop"></div>
+    <section class="pdf-demo-panel" role="dialog" aria-labelledby="pdfDemoTitle">
+      <header class="pdf-demo-header">
+        <div>
+          <p class="pdf-demo-kicker">PDFプレビュー</p>
+        </div>
+        <button id="pdfDemoClose" class="pdf-demo-close" type="button" aria-label="閉じる">×</button>
+      </header>
+      <div class="pdf-demo-body">
+        <section>
+          <p class="pdf-demo-label">対象タブ</p>
+          <p id="pdfDemoTab" class="pdf-demo-value">深堀りする：個別分析</p>
+        </section>
+        <section>
+          <p class="pdf-demo-label">選択中ブランド</p>
+          <p id="pdfDemoBrand" class="pdf-demo-value">未選択</p>
+        </section>
+        <section id="pdfDemoAiReportsSection" class="pdf-demo-ai-reports" style="display:none;">
+          <p class="pdf-demo-label">対象レポート</p>
+          <div id="pdfDemoAiReports"></div>
+        </section>
+        <section class="pdf-demo-preview">
+          <div id="pdfDemoPreviewPage" class="pdf-preview-page" data-preview="generic">
+            <div class="pdf-preview-header"></div>
+            <div class="pdf-preview-metrics">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="pdf-preview-chart"></div>
+            <div class="pdf-preview-subgrid">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <p id="pdfDemoPreviewCaption" class="pdf-preview-caption">サンプルPDFレイアウト</p>
+        </section>
+        <section class="pdf-demo-footer-note">
+          <p>※実際のPDFには現在表示中のタブ構成・フィルター条件を反映します。</p>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
