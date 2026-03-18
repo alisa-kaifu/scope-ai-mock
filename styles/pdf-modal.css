@@ -1,0 +1,227 @@
+.pdf-demo-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999;
+}
+
+.pdf-demo-overlay.is-open {
+  display: block;
+}
+
+.pdf-demo-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.pdf-demo-panel {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(420px, 90vw);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.pdf-demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.pdf-demo-kicker {
+  margin: 0;
+  font-size: 11px;
+  color: #777;
+}
+
+.pdf-demo-header h3 {
+  margin: 2px 0 0;
+  font-size: 18px;
+}
+
+.pdf-demo-close {
+  border: 1px solid #ccc;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pdf-demo-body {
+  padding: 16px 18px 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.pdf-demo-label {
+  margin: 0;
+  font-size: 11px;
+  color: #777;
+}
+
+.pdf-demo-value {
+  margin: 2px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pdf-demo-ai-reports {
+  font-size: 12px;
+}
+
+.pdf-demo-ai-reports ul {
+  margin: 4px 0 0;
+  padding-left: 0;
+  color: #444;
+}
+
+.pdf-demo-ai-reports li {
+  font-weight: 700;
+  font-size: 16px;
+  list-style: none;
+  margin: 0;
+}
+
+.pdf-demo-section h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.pdf-demo-section ol {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #444;
+}
+
+.pdf-demo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-preview-page {
+  width: 220px;
+  height: 310px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pdf-preview-header {
+  height: 20px;
+  background: linear-gradient(90deg, #f29f05, #f6c45d);
+  border-radius: 3px;
+}
+
+.pdf-preview-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.pdf-preview-metrics span,
+.pdf-preview-subgrid span {
+  display: block;
+  height: 18px;
+  background: #f3f3f3;
+  border-radius: 2px;
+}
+
+.pdf-preview-chart {
+  height: 70px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(242, 159, 5, 0.25),
+      rgba(242, 159, 5, 0.25) 8px,
+      rgba(255, 255, 255, 0.4) 8px,
+      rgba(255, 255, 255, 0.4) 16px
+    ),
+    #fff7e7;
+  border: 1px solid #f7e2bd;
+}
+
+.pdf-preview-subgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.pdf-preview-caption {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+.pdf-preview-page[data-preview="deepdive"] .pdf-preview-header {
+  background: linear-gradient(90deg, #f29f05, #c07500);
+}
+
+.pdf-preview-page[data-preview="deepdive"] .pdf-preview-chart {
+  background: repeating-linear-gradient(
+      to right,
+      rgba(110, 167, 225, 0.35),
+      rgba(110, 167, 225, 0.35) 8px,
+      rgba(242, 159, 5, 0.25) 8px,
+      rgba(242, 159, 5, 0.25) 16px
+    ),
+    #fff;
+}
+
+.pdf-preview-page[data-preview="ranking"] .pdf-preview-header {
+  background: linear-gradient(90deg, #5ab1f5, #385d92);
+}
+
+.pdf-preview-page[data-preview="hit"] .pdf-preview-header {
+  background: linear-gradient(90deg, #f2784b, #d1430c);
+}
+
+.pdf-preview-page[data-preview="market"] .pdf-preview-header {
+  background: linear-gradient(90deg, #7d75f0, #4234b2);
+}
+
+.pdf-preview-page[data-preview="search"] .pdf-preview-header {
+  background: linear-gradient(90deg, #999, #555);
+}
+
+.pdf-preview-page[data-preview="discover"] .pdf-preview-header {
+  background: linear-gradient(90deg, #76c893, #218c74);
+}
+
+.pdf-preview-page[data-preview="ai"] .pdf-preview-header {
+  background: linear-gradient(90deg, #2a7bff, #433de4);
+}
+
+.pdf-preview-page[data-preview="ai"] .pdf-preview-chart {
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(67, 61, 228, 0.35),
+      rgba(67, 61, 228, 0.35) 8px,
+      rgba(42, 123, 255, 0.15) 8px,
+      rgba(42, 123, 255, 0.15) 16px
+    ),
+    #eef2ff;
+}
+
+.pdf-demo-footer-note {
+  font-size: 11px;
+  color: #777;
+  border-top: 1px dashed #ddd;
+  padding-top: 8px;
+}

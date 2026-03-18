@@ -1,0 +1,82 @@
+:root {
+  --bg: #e1e1e1;
+  --paper: #f7f7f7;
+  --line: #cfcfcf;
+  --text: #222;
+  --muted: #707070;
+  --orange: #ef8f00;
+  --orange-deep: #de7f00;
+  --blue: #5f97d3;
+  --green: #68b65c;
+  --red: #df6464;
+  --ai-handle-w: 24px;
+  --ai-handle-h: 72px;
+  --ai-handle-gap: 8px;
+  --ai-min-handle-size: 72px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+select {
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  padding: 5px 8px;
+  width: 220px;
+  font-size: 12px;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+  background: #fff;
+  color: #333;
+}
+
+.btn-primary {
+  border-color: #e9640b;
+  background: #e9640b;
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  border-color: #d4d4d4;
+  background: #fff;
+}
+
+.btn-tertiary {
+  border-color: #2a6dbd;
+  background: #2a6dbd;
+  color: #fff;
+}
+
+.ghost-btn {
+  border: 1px solid #9f9f9f;
+  background: #fff;
+  color: #555;
+  font-size: 11px;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

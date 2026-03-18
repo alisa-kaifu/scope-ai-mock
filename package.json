@@ -1,0 +1,21 @@
+{
+  "name": "scope-ai-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisa-kaifu/scope-ai-mock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alisa-kaifu/scope-ai-mock/issues"
+  },
+  "homepage": "https://github.com/alisa-kaifu/scope-ai-mock#readme"
+}
