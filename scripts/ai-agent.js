@@ -85,7 +85,10 @@ export function initAiAgent() {
 	};
 
 	const renderButtons = () => {
-		expandBtn.textContent = "◀";
+		const expandIcon = expandBtn.querySelector(".ai-agent-handle-toggle-icon");
+		if (expandIcon) {
+			expandIcon.textContent = "◀";
+		}
 		shrinkBtn.textContent = "▶";
 
 		const isFull = viewMode === "full";
