@@ -7,6 +7,7 @@ export function initPdfDemo() {
 	const closeBtn = document.getElementById("pdfDemoClose");
 	const tabField = document.getElementById("pdfDemoTab");
 	const brandField = document.getElementById("pdfDemoBrand");
+	const brandSection = document.getElementById("pdfDemoBrandSection");
 	const previewPage = document.getElementById("pdfDemoPreviewPage");
 	const previewCaption = document.getElementById("pdfDemoPreviewCaption");
 	const aiReportSection = document.getElementById("pdfDemoAiReportsSection");
@@ -32,6 +33,17 @@ export function initPdfDemo() {
 			brandField.textContent = isAiMode
 				? aiBrandLabel?.textContent ?? "未選択"
 				: appState.aiCurrentSelectedBrand || "未選択";
+		}
+
+		if (brandSection) {
+			const aiTitleRaw = aiPanelTitle?.textContent ?? "";
+			const normalizedTitle = aiTitleRaw.replace(/掘|堀/g, "掘");
+			const shouldShowBrand =
+				!isAiMode ||
+				normalizedTitle.includes("深掘りする：個別分析") ||
+				normalizedTitle.includes("深掘りする：比較分析");
+
+			brandSection.style.display = shouldShowBrand ? "block" : "none";
 		}
 
 		if (aiReportSection && aiReportList) {

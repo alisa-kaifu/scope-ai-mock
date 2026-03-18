@@ -36,7 +36,10 @@ export function initAiMockContent() {
 			return;
 		}
 
-		summaryOutput.innerHTML = summaryMap[appState.activeSummaryKey] ?? summaryMap.overview;
+		const summaryTemplate = summaryMap[appState.activeSummaryKey] ?? summaryMap.overview;
+		const normalizedSummary =
+			typeof summaryTemplate === "string" ? summaryTemplate.trimStart() : summaryTemplate;
+		summaryOutput.innerHTML = normalizedSummary;
 		updateDataCoverageVisibility();
 	};
 

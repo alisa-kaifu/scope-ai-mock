@@ -5,14 +5,22 @@ export function initAiAgent() {
 	const expandBtn = document.getElementById("aiAgentToggle"); // ◀
 	const shrinkBtn = document.getElementById("aiAgentCollapse"); // ▶
 	const closeBtn = document.getElementById("aiAgentClose");
+	const handleStack = document.querySelector(".ai-agent-handle-stack");
 
-	if (!layer || !panel || !backdrop || !expandBtn || !shrinkBtn || !closeBtn) {
+	if (!layer || !panel || !backdrop || !expandBtn || !shrinkBtn || !closeBtn || !handleStack) {
 		return;
 	}
 
 	/** @type {"full" | "compact" | "min"} */
 	let viewMode = "min";
 	let canDock = false;
+	let handlePositionPct = 60;
+	let dragStartPct = handlePositionPct;
+	let dragStartY = 0;
+	let isDraggingHandle = false;
+	let dragPointerId = null;
+	let dragHasMoved = false;
+	let suppressNextHandleClick = false;
 
 	const getMainColumn = () => document.querySelector(".main-column");
 
@@ -68,6 +76,7 @@ export function initAiAgent() {
 	const renderPanel = () => {
 		panel.classList.remove("is-full", "is-compact", "is-min");
 		panel.style.removeProperty("width");
+		handleStack.style.setProperty("--ai-handle-top", `${handlePositionPct}%`);
 
 		if (viewMode === "full") {
 			panel.classList.add("is-full");
@@ -184,6 +193,75 @@ export function initAiAgent() {
 		render();
 	};
 
+	const clampHandlePosition = (pct) => Math.min(85, Math.max(20, pct));
+
+	const applyHandlePosition = () => {
+		handleStack.style.setProperty("--ai-handle-top", `${handlePositionPct}%`);
+	};
+
+	const handleDragMove = (event) => {
+		if (dragPointerId === null || event.pointerId !== dragPointerId) {
+			return;
+		}
+
+		const deltaY = event.clientY - dragStartY;
+		if (!dragHasMoved && Math.abs(deltaY) < 5) {
+			return;
+		}
+
+		if (!dragHasMoved) {
+			dragHasMoved = true;
+			isDraggingHandle = true;
+			handleStack.classList.add("is-dragging");
+		}
+
+		event.preventDefault();
+		const deltaPct = (deltaY / window.innerHeight) * 100;
+		handlePositionPct = clampHandlePosition(dragStartPct + deltaPct);
+		handleStack.style.setProperty("--ai-handle-top", `${handlePositionPct}%`);
+	};
+
+	const stopHandleDrag = (event) => {
+		if (dragPointerId === null) {
+			return;
+		}
+
+		if (event?.pointerId !== undefined && event.pointerId !== dragPointerId) {
+			return;
+		}
+
+		window.removeEventListener("pointermove", handleDragMove);
+		window.removeEventListener("pointerup", stopHandleDrag);
+		window.removeEventListener("pointercancel", stopHandleDrag);
+
+		if (isDraggingHandle) {
+			suppressNextHandleClick = true;
+		}
+
+		dragPointerId = null;
+		dragHasMoved = false;
+		if (isDraggingHandle) {
+			isDraggingHandle = false;
+			handleStack.classList.remove("is-dragging");
+		}
+	};
+
+	const startHandleDrag = (event) => {
+		if (event.button !== undefined && event.button !== 0 && event.pointerType === "mouse") {
+			return;
+		}
+
+		dragPointerId = event.pointerId ?? 0;
+		dragStartY = event.clientY;
+		dragStartPct = handlePositionPct;
+		dragHasMoved = false;
+		isDraggingHandle = false;
+
+		window.addEventListener("pointermove", handleDragMove);
+		window.addEventListener("pointerup", stopHandleDrag);
+		window.addEventListener("pointercancel", stopHandleDrag);
+	};
+
 	expandBtn.addEventListener("click", () => {
 		expandPanel();
 		render();
@@ -212,6 +290,16 @@ export function initAiAgent() {
 	});
 
 	window.addEventListener("resize", handleResize);
+	handleStack.addEventListener("pointerdown", startHandleDrag);
+	handleStack.addEventListener("click", (event) => {
+		if (!suppressNextHandleClick) {
+			return;
+		}
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		suppressNextHandleClick = false;
+	});
+	window.addEventListener("blur", stopHandleDrag);
 
 	evaluateDockability();
 	viewMode = getDefaultMode();

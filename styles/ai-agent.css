@@ -107,13 +107,15 @@
 .ai-agent-handle-stack {
 	position: absolute;
 	right: calc(100% + var(--ai-handle-gap));
-	top: 50%;
+	top: var(--ai-handle-top, 60%);
 	transform: translateY(-50%);
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	z-index: 3;
 	pointer-events: auto;
+	cursor: grab;
+	touch-action: none;
 }
 
 .ai-agent-handle-toggle,
@@ -132,6 +134,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 	flex-direction: column;
 	gap: 2px;
 	opacity: 1;
@@ -189,8 +192,6 @@
 
 .ai-agent-panel.is-compact .ai-agent-handle-stack {
 	right: calc(100% + var(--ai-handle-gap));
-	top: 50%;
-	transform: translateY(-50%);
 	gap: 10px;
 }
 
@@ -212,9 +213,11 @@
 
 .ai-agent-panel.is-min .ai-agent-handle-stack {
 	right: var(--ai-handle-gap);
-	top: 50%;
-	transform: translateY(-50%);
 	gap: 0;
+}
+
+.ai-agent-handle-stack.is-dragging {
+	cursor: grabbing;
 }
 
 .ai-agent-panel.is-min .ai-agent-handle-toggle {
@@ -237,6 +240,40 @@
 
 .ai-agent-panel.is-min .ai-agent-handle-toggle:hover {
 	filter: brightness(1.05);
+}
+
+.ai-agent-handle-grip {
+	display: none;
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 12px;
+	height: 32px;
+	border-radius: 6px;
+	pointer-events: none;
+	opacity: 0.85;
+}
+
+.ai-agent-handle-grip::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 4px;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: #cfd2d6;
+	box-shadow:
+		0 8px 0 #cfd2d6,
+		0 16px 0 #cfd2d6,
+		6px 0 0 #cfd2d6,
+		6px 8px 0 #cfd2d6,
+		6px 16px 0 #cfd2d6;
+}
+
+.ai-agent-panel.is-min .ai-agent-handle-grip {
+	display: block;
 }
 
 .ai-agent-panel.is-min .ai-agent-handle-collapse {
@@ -675,7 +712,7 @@
 	padding-right: 6px;
 	padding-bottom: 6px;
 	scrollbar-gutter: stable;
-	white-space: pre-line;
+	white-space: normal;
 }
 
 @media (max-width: 980px) {
